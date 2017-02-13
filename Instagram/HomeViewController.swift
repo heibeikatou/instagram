@@ -32,6 +32,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let nib = UINib(nibName: "PostTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        // 背景をタップしたらdismissKeyboardメソッドを呼ぶように設定する
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tapGesture)
+        
 
     }
 
@@ -114,6 +119,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return postArray.count
     }
     
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // セルを取得してデータを設定する
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath as IndexPath) as! PostTableViewCell
@@ -122,8 +129,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // セル内のボタンのアクションをソースコードで設定する
         cell.likeButton.addTarget(self, action:#selector(handleButton(sender:event:)), for:  UIControlEvents.touchUpInside)
         
+        // セル内のボタンのアクションをソースコードで設定する
+        cell.likeButton.addTarget(self, action:#selector(commentButton(sender:event:)), for:  UIControlEvents.touchUpInside)
+        
         return cell
     }
+    
+    
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         // Auto Layoutを使ってセルの高さを動的に変更する
@@ -133,6 +145,27 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // セルをタップされたら何もせずに選択状態を解除する
         tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+        // キーボードを閉じる
+        self.view.endEditing(true)
+    }
+    
+    func commentButton(sender:UIButton,event:UIEvent){
+        print("DEBUG_PRINT: 投稿ボタンがタップされました。")
+        
+        // タップされたセルのインデックスを求める
+        let touch = event.allTouches?.first
+        let point = touch!.location(in: self.tableView)
+        let indexPath = tableView.indexPathForRow(at: point)
+        
+        // 配列からタップされたインデックスのデータを取り出す
+        let postData = postArray[indexPath!.row]
+        
+        let postRef = FIRDatabase.database().reference().child(Const.PostPath).child(postData.id!)
+        
+        let comments = ["comment": postData.comment]
+        postRef.updateChildValues(comments)
+        
+        
     }
     
     // セル内のボタンがタップされた時に呼ばれるメソッド
@@ -171,4 +204,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
         }
     }
+    func dismissKeyboard(){
+        // キーボードを閉じる
+        view.endEditing(true)
+    }
+    
 }
