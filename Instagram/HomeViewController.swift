@@ -32,6 +32,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let nib = UINib(nibName: "PostTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
         tableView.rowHeight = UITableViewAutomaticDimension
+
         
         // 背景をタップしたらdismissKeyboardメソッドを呼ぶように設定する
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(dismissKeyboard))
@@ -136,6 +137,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func setupComment(sender: UIButton, event:UIEvent){
         print("DEBUG_PRINT: [HomeViewController] setupComment")
+        
         // タップされたセルのインデックスを求める
         let touch = event.allTouches?.first
         let point = touch!.location(in: self.tableView)
@@ -143,11 +145,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         // 配列からタップされたインデックスのデータを取り出す
         let postData = postArray[indexPath!.row]
-        // Firebaseに保存するデータの準備
-        if let uid = FIRAuth.auth()?.currentUser?.uid {
-            postData.comment.append(uid)
-        }
-        performSegue(withIdentifier: "segueComment",sender: nil)
+
+        //コメントデータを格納
+        let tmpComments = ["\(postData.comment)"]
+        //画面遷移
+        self.performSegue(withIdentifier: "segueComment",sender: "\(tmpComments)")
     }
 
 
