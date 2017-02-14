@@ -325,11 +325,87 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="Sc5-WZ-Tzx" id="w0r-q8-fDl"/>
+                        <segue destination="XWD-mA-onA" kind="modal" identifier="segueComment" animates="NO" id="1JF-p9-L5x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gs2-Kw-Th9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1544.8" y="136.28185907046478"/>
+        </scene>
+        <!--Comment View Controller-->
+        <scene sceneID="rmZ-5E-WH1">
+            <objects>
+                <viewController id="XWD-mA-onA" customClass="CommentViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ijc-1R-Y24"/>
+                        <viewControllerLayoutGuide type="bottom" id="vfB-d2-gmK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JH0-FP-Kd7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MHG-h2-80u">
+                                <rect key="frame" x="94" y="573" width="187" height="40"/>
+                                <state key="normal" title="投稿" backgroundImage="btn"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名前" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wf8-oZ-Sza">
+                                <rect key="frame" x="46" y="191" width="35" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="コメント" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wVW-Q1-oWu">
+                                <rect key="frame" x="46" y="272" width="70" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KrZ-tf-hHo">
+                                <rect key="frame" x="46" y="222" width="283" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="done"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PaU-a4-j4r">
+                                <rect key="frame" x="46" y="303" width="283" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="sng-50-iIh"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="名前とコメントを書いて、投稿しよう" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zs-21-TAh">
+                                <rect key="frame" x="40" y="64" width="295" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="MHG-h2-80u" secondAttribute="trailing" constant="78" id="7oq-Ma-OqU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PaU-a4-j4r" secondAttribute="trailing" constant="30" id="8zK-0m-UkQ"/>
+                            <constraint firstItem="MHG-h2-80u" firstAttribute="top" secondItem="PaU-a4-j4r" secondAttribute="bottom" constant="120" id="C9Z-J7-3Jk"/>
+                            <constraint firstItem="wVW-Q1-oWu" firstAttribute="top" secondItem="KrZ-tf-hHo" secondAttribute="bottom" constant="20" id="KQl-5w-SL0"/>
+                            <constraint firstItem="MHG-h2-80u" firstAttribute="leading" secondItem="JH0-FP-Kd7" secondAttribute="leadingMargin" constant="78" id="M2w-v7-Vn7"/>
+                            <constraint firstItem="wf8-oZ-Sza" firstAttribute="top" secondItem="6zs-21-TAh" secondAttribute="bottom" constant="100" id="MSB-mu-Obw"/>
+                            <constraint firstItem="wVW-Q1-oWu" firstAttribute="leading" secondItem="JH0-FP-Kd7" secondAttribute="leadingMargin" constant="30" id="N6g-wl-Isi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KrZ-tf-hHo" secondAttribute="trailing" constant="30" id="SA0-N1-TyV"/>
+                            <constraint firstItem="6zs-21-TAh" firstAttribute="top" secondItem="Ijc-1R-Y24" secondAttribute="bottom" constant="50" id="T4u-WG-3pV"/>
+                            <constraint firstItem="KrZ-tf-hHo" firstAttribute="top" secondItem="wf8-oZ-Sza" secondAttribute="bottom" constant="10" id="TPg-h8-oLW"/>
+                            <constraint firstItem="PaU-a4-j4r" firstAttribute="leading" secondItem="JH0-FP-Kd7" secondAttribute="leadingMargin" constant="30" id="arR-Jb-TSK"/>
+                            <constraint firstItem="wf8-oZ-Sza" firstAttribute="leading" secondItem="JH0-FP-Kd7" secondAttribute="leadingMargin" constant="30" id="fl6-BC-ZBo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6zs-21-TAh" secondAttribute="trailing" constant="20" id="hHS-ST-OgU"/>
+                            <constraint firstItem="KrZ-tf-hHo" firstAttribute="leading" secondItem="JH0-FP-Kd7" secondAttribute="leadingMargin" constant="30" id="jZV-e3-sbc"/>
+                            <constraint firstItem="6zs-21-TAh" firstAttribute="leading" secondItem="JH0-FP-Kd7" secondAttribute="leadingMargin" constant="20" id="loh-O9-G9X"/>
+                            <constraint firstItem="PaU-a4-j4r" firstAttribute="top" secondItem="wVW-Q1-oWu" secondAttribute="bottom" constant="10" id="vRy-f0-ztE"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VHB-km-Cp5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2232.8000000000002" y="135.38230884557723"/>
         </scene>
     </scenes>
     <resources>

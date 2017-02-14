@@ -125,18 +125,20 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // セルを取得してデータを設定する
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath as IndexPath) as! PostTableViewCell
         cell.setPostData(postData: postArray[indexPath.row])
-        
-        // セル内のボタンのアクションをソースコードで設定する
         cell.likeButton.addTarget(self, action:#selector(handleButton(sender:event:)), for:  UIControlEvents.touchUpInside)
-        
+
         // セル内のボタンのアクションをソースコードで設定する
-        cell.likeButton.addTarget(self, action:#selector(commentButton(sender:event:)), for:  UIControlEvents.touchUpInside)
+        cell.commentButton.addTarget(self, action:#selector(setupComment(sender:event:)), for:  UIControlEvents.touchUpInside)
         
         return cell
     }
     
-    
-    
+    func setupComment(sender: UIButton, event:UIEvent){
+        print("DEBUG_PRINT: [HomeViewController] 投稿ボタンがタップされました。")
+        performSegue(withIdentifier: "segueComment",sender: nil)
+    }
+
+
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         // Auto Layoutを使ってセルの高さを動的に変更する
         return UITableViewAutomaticDimension
@@ -147,24 +149,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.deselectRow(at: indexPath as IndexPath, animated: true)
         // キーボードを閉じる
         self.view.endEditing(true)
-    }
-    
-    func commentButton(sender:UIButton,event:UIEvent){
-        print("DEBUG_PRINT: 投稿ボタンがタップされました。")
-        
-        // タップされたセルのインデックスを求める
-        let touch = event.allTouches?.first
-        let point = touch!.location(in: self.tableView)
-        let indexPath = tableView.indexPathForRow(at: point)
-        
-        // 配列からタップされたインデックスのデータを取り出す
-        let postData = postArray[indexPath!.row]
-        
-        let postRef = FIRDatabase.database().reference().child(Const.PostPath).child(postData.id!)
-        
-        let comments = ["comment": postData.comment]
-        postRef.updateChildValues(comments)
-        
         
     }
     

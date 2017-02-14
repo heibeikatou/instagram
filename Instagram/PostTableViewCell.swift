@@ -16,23 +16,8 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var likeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!
-    
-    @IBOutlet weak var viewComment: UIView!
-    @IBOutlet weak var txtCommentName: UITextField!
-    @IBOutlet weak var txtComment: UITextField!
+    @IBOutlet weak var commentButton: UIButton!
 
-    
-    @IBAction func setComment(_ sender: Any) {
-        
-        self.viewComment.isHidden=true
-        
-    }
-    
-    
-    @IBAction func btnComment(_ sender: Any) {
-
-        self.viewComment.isHidden=false
-    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,7 +25,7 @@ class PostTableViewCell: UITableViewCell {
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
-        self.viewComment.isHidden=true
+
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
