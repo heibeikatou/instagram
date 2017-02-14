@@ -122,6 +122,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("DEBUG_PRINT: [HomeViewController] cellForRowAt")
         // セルを取得してデータを設定する
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath as IndexPath) as! PostTableViewCell
         cell.setPostData(postData: postArray[indexPath.row])
@@ -134,7 +135,18 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func setupComment(sender: UIButton, event:UIEvent){
-        print("DEBUG_PRINT: [HomeViewController] 投稿ボタンがタップされました。")
+        print("DEBUG_PRINT: [HomeViewController] setupComment")
+        // タップされたセルのインデックスを求める
+        let touch = event.allTouches?.first
+        let point = touch!.location(in: self.tableView)
+        let indexPath = tableView.indexPathForRow(at: point)
+        
+        // 配列からタップされたインデックスのデータを取り出す
+        let postData = postArray[indexPath!.row]
+        // Firebaseに保存するデータの準備
+        if let uid = FIRAuth.auth()?.currentUser?.uid {
+            postData.comment.append(uid)
+        }
         performSegue(withIdentifier: "segueComment",sender: nil)
     }
 

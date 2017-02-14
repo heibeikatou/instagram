@@ -325,7 +325,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="Sc5-WZ-Tzx" id="w0r-q8-fDl"/>
-                        <segue destination="XWD-mA-onA" kind="modal" identifier="segueComment" animates="NO" id="1JF-p9-L5x"/>
+                        <segue destination="XWD-mA-onA" kind="presentation" identifier="segueComment" animates="NO" id="1JF-p9-L5x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gs2-Kw-Th9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -375,8 +375,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="名前とコメントを書いて、投稿しよう" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zs-21-TAh">
-                                <rect key="frame" x="40" y="64" width="295" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名前とコメントを書いて、投稿しよう" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zs-21-TAh">
+                                <rect key="frame" x="36" y="70" width="303" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
