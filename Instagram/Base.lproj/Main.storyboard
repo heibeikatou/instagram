@@ -348,6 +348,7 @@
                                 <rect key="frame" x="94" y="573" width="187" height="40"/>
                                 <state key="normal" title="投稿" backgroundImage="btn"/>
                                 <connections>
+                                    <action selector="entryComment:" destination="XWD-mA-onA" eventType="touchUpInside" id="xIY-uC-vdu"/>
                                     <segue destination="iYN-DF-s76" kind="show" animates="NO" id="bxU-4Z-n4X"/>
                                 </connections>
                             </button>

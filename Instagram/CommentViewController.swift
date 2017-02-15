@@ -10,6 +10,8 @@ import UIKit
 
 class CommentViewController: UIViewController, UITextFieldDelegate {
 
+    var postData = PostData!.self
+
 
     @IBOutlet weak var sendName: UITextField!
     @IBOutlet weak var sendComment: UITextField!
@@ -22,10 +24,17 @@ class CommentViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func entryComment(_ sender: Any) {
+ 
+        
+        
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     @IBAction func getName(_ sender: Any) {
     }

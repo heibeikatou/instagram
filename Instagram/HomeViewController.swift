@@ -138,11 +138,29 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func setupComment(sender: UIButton, event:UIEvent){
         print("DEBUG_PRINT: [HomeViewController] setupComment")
         
+        //タップされたセルのインデックスを求める
+        let touch = event.allTouches?.first
+        let point = touch!.location(in: self.tableView)
+        let indexPath = tableView.indexPathForRow(at: point)
+        
+        // 配列からタップされたインデックスのデータを取り出す
+        let seguePostData = postArray[indexPath!.row]
+        
         //画面遷移
-        self.performSegue(withIdentifier: "segueComment",sender: nil)
+        self.performSegue(withIdentifier: "segueComment",sender: seguePostData)
         
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueComment"{
+            // segueから遷移先のResultViewControllerを取得する
+            let resultViewController:CommentViewController = segue.destination as! CommentViewController
+            // 遷移先のResultViewControllerで宣言しているx, yに値を代入して渡す
+            resultViewController.postData = sender as! PostData
+            
+        }
+
+    }
 
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         // Auto Layoutを使ってセルの高さを動的に変更する
