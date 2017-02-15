@@ -29,7 +29,7 @@ class CommentViewController: UIViewController, UITextFieldDelegate {
  
         
         postData.name = sendName.text
-        postData.comment = postData.comment + sendComment.text
+        postData.comment = postData.comment + sendComment.text!
         
         
     }
