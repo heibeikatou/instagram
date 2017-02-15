@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class CommentViewController: UIViewController, UITextFieldDelegate {
 
@@ -22,22 +23,26 @@ class CommentViewController: UIViewController, UITextFieldDelegate {
         sendName.delegate = self
         sendComment.delegate=self
         // Do any additional setup after loading the view.
-        sendName.text = postData.name
+        sendName.text = postData.name!
     }
 
     @IBAction func entryComment(_ sender: Any) {
- 
+
+        postData.comment += ["> \(sendName.text!):\(sendComment.text!)"]
+//        print("\(postData.comment)")
         
-        postData.name = sendName.text
-        postData.comment = postData.comment + sendComment.text!
-        
+        let postRef = FIRDatabase.database().reference().child(Const.PostPath).child(postData.id!)
+        let comments = ["comment": postData.comment]
+        postRef.updateChildValues(comments)
+        // 画面を閉じてViewControllerに戻る
+        self.dismiss(animated: true, completion: nil)
         
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     
     @IBAction func getName(_ sender: Any) {
         

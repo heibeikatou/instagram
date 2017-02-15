@@ -349,7 +349,7 @@
                                 <state key="normal" title="投稿" backgroundImage="btn"/>
                                 <connections>
                                     <action selector="entryComment:" destination="XWD-mA-onA" eventType="touchUpInside" id="xIY-uC-vdu"/>
-                                    <segue destination="iYN-DF-s76" kind="show" animates="NO" id="bxU-4Z-n4X"/>
+                                    <segue destination="iYN-DF-s76" kind="show" identifier="segueBackData" animates="NO" id="bxU-4Z-n4X"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名前" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wf8-oZ-Sza">
@@ -368,7 +368,7 @@
                                 <rect key="frame" x="46" y="222" width="283" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
                                     <action selector="getName:" destination="XWD-mA-onA" eventType="editingDidEndOnExit" id="tCh-88-neS"/>
                                 </connections>

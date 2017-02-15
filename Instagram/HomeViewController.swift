@@ -14,6 +14,7 @@ import FirebaseDatabase
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var postArray: [PostData] = []
+    var backData:PostData!
     
     // FIRDatabaseのobserveEventの登録状態を表す
     var observing = false
@@ -56,7 +57,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 // 要素が追加されたらpostArrayに追加してTableViewを再表示する
                 let postsRef = FIRDatabase.database().reference().child(Const.PostPath)
                 postsRef.observe(.childAdded, with: { snapshot in
-                    print("DEBUG_PRINT: .childAddedイベントが発生しました。")
+                    print("DEBUG_PRINT: A.childAddedイベントが発生しました。")
                     
                     // PostDataクラスを生成して受け取ったデータを設定する
                     if let uid = FIRAuth.auth()?.currentUser?.uid {
@@ -69,7 +70,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 })
                 // 要素が変更されたら該当のデータをpostArrayから一度削除した後に新しいデータを追加してTableViewを再表示する
                 postsRef.observe(.childChanged, with: { snapshot in
-                    print("DEBUG_PRINT: .childChangedイベントが発生しました。")
+                    print("DEBUG_PRINT: B.childChangedイベントが発生しました。")
                     
                     if let uid = FIRAuth.auth()?.currentUser?.uid {
                         // PostDataクラスを生成して受け取ったデータを設定する
