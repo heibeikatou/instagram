@@ -130,16 +130,17 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.likeButton.addTarget(self, action:#selector(handleButton(sender:event:)), for:  UIControlEvents.touchUpInside)
 
         // セル内のボタンのアクションをソースコードで設定する
-        cell.commentButton.addTarget(self, action:#selector(setupComment(sender:)), for:  UIControlEvents.touchUpInside)
+        cell.commentButton.addTarget(self, action:#selector(setupComment(sender:event:)), for:  UIControlEvents.touchUpInside)
         
         return cell
     }
     
-    func setupComment(sender: UIButton){
+    func setupComment(sender: UIButton, event:UIEvent){
         print("DEBUG_PRINT: [HomeViewController] setupComment")
-
+        
         //画面遷移
         self.performSegue(withIdentifier: "segueComment",sender: nil)
+        
     }
 
 

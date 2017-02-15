@@ -347,6 +347,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MHG-h2-80u">
                                 <rect key="frame" x="94" y="573" width="187" height="40"/>
                                 <state key="normal" title="投稿" backgroundImage="btn"/>
+                                <connections>
+                                    <segue destination="iYN-DF-s76" kind="show" animates="NO" id="bxU-4Z-n4X"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名前" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wf8-oZ-Sza">
                                 <rect key="frame" x="46" y="191" width="35" height="21"/>
@@ -365,6 +368,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="done"/>
+                                <connections>
+                                    <action selector="getName:" destination="XWD-mA-onA" eventType="editingDidEndOnExit" id="tCh-88-neS"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PaU-a4-j4r">
                                 <rect key="frame" x="46" y="303" width="283" height="150"/>
@@ -374,6 +380,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
+                                <connections>
+                                    <action selector="getComment:" destination="XWD-mA-onA" eventType="editingDidEndOnExit" id="bGG-al-68p"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名前とコメントを書いて、投稿しよう" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zs-21-TAh">
                                 <rect key="frame" x="36" y="70" width="303" height="21"/>
@@ -402,6 +411,11 @@
                             <constraint firstItem="PaU-a4-j4r" firstAttribute="top" secondItem="wVW-Q1-oWu" secondAttribute="bottom" constant="10" id="vRy-f0-ztE"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="sendComment" destination="PaU-a4-j4r" id="tgZ-sK-Msi"/>
+                        <outlet property="sendContents" destination="MHG-h2-80u" id="BdN-j3-e2V"/>
+                        <outlet property="sendName" destination="KrZ-tf-hHo" id="9GN-33-wGM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VHB-km-Cp5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

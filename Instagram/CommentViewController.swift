@@ -8,11 +8,17 @@
 
 import UIKit
 
-class CommentViewController: UIViewController {
+class CommentViewController: UIViewController, UITextFieldDelegate {
 
+
+    @IBOutlet weak var sendName: UITextField!
+    @IBOutlet weak var sendComment: UITextField!
+    @IBOutlet weak var sendContents: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        sendName.delegate = self
+        sendComment.delegate=self
         // Do any additional setup after loading the view.
     }
 
@@ -21,7 +27,11 @@ class CommentViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func getName(_ sender: Any) {
+    }
 
+    @IBAction func getComment(_ sender: Any) {
+    }
     /*
     // MARK: - Navigation
 
