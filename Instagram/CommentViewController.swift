@@ -10,7 +10,7 @@ import UIKit
 
 class CommentViewController: UIViewController, UITextFieldDelegate {
 
-    var postData = PostData!.self
+    var postData:PostData!
 
 
     @IBOutlet weak var sendName: UITextField!
@@ -22,11 +22,14 @@ class CommentViewController: UIViewController, UITextFieldDelegate {
         sendName.delegate = self
         sendComment.delegate=self
         // Do any additional setup after loading the view.
+        sendName.text = postData.name
     }
 
     @IBAction func entryComment(_ sender: Any) {
  
         
+        postData.name = sendName.text
+        postData.comment = postData.comment + sendComment.text
         
         
     }
@@ -37,6 +40,7 @@ class CommentViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func getName(_ sender: Any) {
+        
     }
 
     @IBAction func getComment(_ sender: Any) {

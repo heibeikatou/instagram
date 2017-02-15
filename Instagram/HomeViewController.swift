@@ -155,7 +155,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if segue.identifier == "segueComment"{
             // segueから遷移先のResultViewControllerを取得する
             let resultViewController:CommentViewController = segue.destination as! CommentViewController
-            // 遷移先のResultViewControllerで宣言しているx, yに値を代入して渡す
+            // 遷移先のResultViewControllerで宣言しているpostDataに値を代入して渡す
             resultViewController.postData = sender as! PostData
             
         }

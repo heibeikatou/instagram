@@ -373,7 +373,7 @@
                                     <action selector="getName:" destination="XWD-mA-onA" eventType="editingDidEndOnExit" id="tCh-88-neS"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PaU-a4-j4r">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PaU-a4-j4r">
                                 <rect key="frame" x="46" y="303" width="283" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="sng-50-iIh"/>
