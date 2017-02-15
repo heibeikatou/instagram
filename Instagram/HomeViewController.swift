@@ -130,26 +130,16 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.likeButton.addTarget(self, action:#selector(handleButton(sender:event:)), for:  UIControlEvents.touchUpInside)
 
         // セル内のボタンのアクションをソースコードで設定する
-        cell.commentButton.addTarget(self, action:#selector(setupComment(sender:event:)), for:  UIControlEvents.touchUpInside)
+        cell.commentButton.addTarget(self, action:#selector(setupComment(sender:)), for:  UIControlEvents.touchUpInside)
         
         return cell
     }
     
-    func setupComment(sender: UIButton, event:UIEvent){
+    func setupComment(sender: UIButton){
         print("DEBUG_PRINT: [HomeViewController] setupComment")
-        
-        // タップされたセルのインデックスを求める
-        let touch = event.allTouches?.first
-        let point = touch!.location(in: self.tableView)
-        let indexPath = tableView.indexPathForRow(at: point)
-        
-        // 配列からタップされたインデックスのデータを取り出す
-        let postData = postArray[indexPath!.row]
 
-        //コメントデータを格納
-        let tmpComments = ["\(postData.comment)"]
         //画面遷移
-        self.performSegue(withIdentifier: "segueComment",sender: "\(tmpComments)")
+        self.performSegue(withIdentifier: "segueComment",sender: nil)
     }
 
 
